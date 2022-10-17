@@ -1,41 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-html{
-    box-sizing:border-box;
+
+html {
+    box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
     font-family: "Lato";
     font-size: 15px;
     line-height: 1.8;
     text-align: center;
+    background-image: url("/public/background.png");
+    background-size: cover;
 }
 
 *, ::after, ::before {
     box-sizing: inherit;
 }
 
-main{
+main {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     background-color: #000000;
     border-radius: 10px;
 }
-.container{
+
+.container {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.calculatorField{
+.calculatorField {
     background-color: #000000;
     color: #ffffff;
     padding: 5%;
-    
+
 }
-.calculatorField_header{
+
+.calculatorField_header {
     font-size: 55px;
     letter-spacing: 2px;
     font-family: "Noto Sans KR";
     font-size: 60px;
-};
+}
+
+;

@@ -1,21 +1,32 @@
 import { useState } from "react";
+import { currencies } from "../currencies";
 import "./style.css";
 
 export const Form = () => {
 
-  const [mySelect, setMySelect] = useState("KRW");
+  const [mySelect, setMySelect] = useState(currencies[1].short);
+  const [currency, setCurrency] = useState(currencies[1].rate);
+  const [amount, setAmount] = useState("");
 
-  const handleChange = (event) => {
-    setMySelect(event.target.value)
-  }
+
+  const myFun = (mySelect, amount) => {
+    const rate = currencies.find(({ short }) => short === mySelect)
+      .rate;
+  };
+
 
   const onFormSubmit = (event) => {
     event.preventDefault();
+    setMySelect(event.target.value);
+    setCurrency(event.target.value);
   };
 
 
   return (
-    <form onSubmit={onFormSubmit} className="form" method="get">
+    <form
+      onSubmit={onFormSubmit}
+      className="form"
+      method="get">
       <fieldset className="form__fieldset">
         <legend className="form__legend">Przelicz wony południowokoreańskie na złotówki</legend>
         <p className="form__paragraph">
@@ -23,7 +34,7 @@ export const Form = () => {
             <h3>Wybierz Walutę</h3>
             <select
               value={mySelect}
-              onChange={handleChange}
+              onChange={({ target }) => setMySelect(target.value)}
               className="form__currencySelect">
               <option
                 className="form_ResPLN"
@@ -41,6 +52,8 @@ export const Form = () => {
           <label>
             Wpisz wartość
             <input
+              value={amount}
+              onChange={({ target }) => setAmount(target.value)}
               className="form__input"
               required type="number"
               name="amount"
@@ -49,14 +62,18 @@ export const Form = () => {
           </label>
         </p>
         <p className="form__paragraph">
-          <span id="currencyName">Kurs KRW</span>
-          <label>
+          <span
+            id="currencyName"
+          >Kurs {currencies[1].short}</span>
+          <label >
             <input
+              value={currency}
+              onChange={({ target }) => setCurrency(target.value)}
               className="form__input"
               required type="number"
               min="0.0001"
               step="any"
-              value="0.0033" />
+            />
           </label>
         </p>
       </fieldset>

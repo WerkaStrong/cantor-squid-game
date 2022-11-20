@@ -1,24 +1,35 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
+import Result from "./Result";
 import "./style.css";
 
 export const Form = () => {
 
   const [mySelect, setMySelect] = useState(currencies[1].short);
-  const [currency, setCurrency] = useState(currencies[1].rate);
-  const [amount, setAmount] = useState("");
+  const [rate, setRate] = useState(currencies[1].rate);
+  const [amount, setAmount] = useState();
+  const [result, setResult] = useState("N/A");
 
 
-  const myFun = (mySelect, amount) => {
-    const rate = currencies.find(({ short }) => short === mySelect)
+  const calculateResult = (currency, amount) => {
+    const rate = currencies
+      .find(({ short }) => short === mySelect)
       .rate;
-  };
+
+
+    setResult({
+      sourceAmount: +amount,
+      targetAmount: amount * rate,
+      currency,
+    });
+  }
 
 
   const onFormSubmit = (event) => {
     event.preventDefault();
     setMySelect(event.target.value);
-    setCurrency(event.target.value);
+    setRate(event.target.value);
+    calculateResult(mySelect, amount);
   };
 
 
@@ -64,13 +75,12 @@ export const Form = () => {
         <p className="form__paragraph">
           <span
             id="currencyName"
-          >Kurs {currencies[1].short}</span>
+          >Kurs {mySelect} </span>
           <label >
             <input
-              value={currency}
-              onChange={({ target }) => setCurrency(target.value)}
+              value={rate}
+              onChange={({ target }) => setRate(target.value)}
               className="form__input"
-              required type="number"
               min="0.0001"
               step="any"
             />
@@ -81,7 +91,7 @@ export const Form = () => {
         <button className="form__button">Przelicz!</button>
         <button className="form__button" type="reset">Wyczyść</button>
       </p>
-      <p className="form__result">Twój wynik: <strong>N/A</strong></p>
+      <Result result={result} />
     </form>
   )
 };

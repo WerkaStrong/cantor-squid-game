@@ -33,16 +33,15 @@ export const Form = () => {
     calculateResult(mySelect, amount);
   };
 
-  const resetInput = () => {
+  const resetResult = () => {
     setMySelect(currencies[1].short)
     setCurrency(currencies[1].rate)
-    setResult("N/A")
   }
 
   return (
     <form
       onSubmit={onFormSubmit}
-      onReset={resetInput}
+      onReset={resetResult}
       className="form"
       method="get">
       <fieldset className="form__fieldset">

@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import { useState } from "react";
 import { currencies } from "../currencies";
 import Result from "./Result";
@@ -32,10 +33,16 @@ export const Form = () => {
     calculateResult(mySelect, amount);
   };
 
+  const resetInput = () => {
+    setMySelect(currencies[1].short)
+    setCurrency(currencies[1].rate)
+    setResult("N/A")
+  }
 
   return (
     <form
       onSubmit={onFormSubmit}
+      onReset={resetInput}
       className="form"
       method="get">
       <fieldset className="form__fieldset">
@@ -88,12 +95,21 @@ export const Form = () => {
         </p>
       </fieldset>
       <p className="form__paragraph">
-        <button className="form__button">Przelicz!</button>
-        <button className="form__button" type="reset">Wyczyść</button>
+        <button
+          className="form__button">
+          Przelicz!
+        </button>
+        <button
+          className="form__button"
+          type="reset">
+          Wyczyść
+        </button>
       </p>
       <Result result={result} />
     </form>
   )
+
+
 };
 
 export default Form;

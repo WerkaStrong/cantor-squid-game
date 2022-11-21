@@ -6,7 +6,7 @@ import "./style.css";
 export const Form = () => {
 
   const [mySelect, setMySelect] = useState(currencies[1].short);
-  const [rate, setRate] = useState(currencies[1].rate);
+  const [currency, setCurrency] = useState(currencies[1].rate);
   const [amount, setAmount] = useState();
   const [result, setResult] = useState("N/A");
 
@@ -28,7 +28,7 @@ export const Form = () => {
   const onFormSubmit = (event) => {
     event.preventDefault();
     setMySelect(event.target.value);
-    setRate(event.target.value);
+    setCurrency(event.target.value);
     calculateResult(mySelect, amount);
   };
 
@@ -78,8 +78,8 @@ export const Form = () => {
           >Kurs {mySelect} </span>
           <label >
             <input
-              value={rate}
-              onChange={({ target }) => setRate(target.value)}
+              value={currency}
+              onChange={({ target }) => setCurrency(target.value)}
               className="form__input"
               min="0.0001"
               step="any"

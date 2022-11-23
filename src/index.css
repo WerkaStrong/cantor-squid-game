@@ -25,19 +25,8 @@ main {
     border-radius: 10px;
 }
 
-.container {
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .calculatorField {
     background-color: #000000;
     color: #ffffff;
-    padding: 5%;
-
-}
-
-
-
-;
+    padding: 2.5%;
+};

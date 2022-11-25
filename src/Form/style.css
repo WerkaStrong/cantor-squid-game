@@ -21,14 +21,13 @@
 
 .form__input{
     padding: 2%;
-    width: 100%;
-    max-width:auto; 
+    width: 90%; 
     border-radius: 4px;
     font-family: "Lato";
 }
 
 .form__button{
-    width:45%;
+    width:40%;
     border: none;
     background-color: #F9247E;
     color: #ffffff;

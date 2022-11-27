@@ -7,7 +7,7 @@ import "./style.css";
 export const Form = () => {
 
   const [mySelect, setMySelect] = useState(currencies[1].short);
-  const [currency, setCurrency] = useState(currencies[1].rate);
+  const [currency, setCurrency] = useState(currencies[0].rate);
   const [amount, setAmount] = useState();
   const [result, setResult] = useState("N/A");
 
@@ -36,6 +36,7 @@ export const Form = () => {
   const resetResult = () => {
     setMySelect(currencies[1].short)
     setCurrency(currencies[1].rate)
+    setResult("N/A")
   }
 
   return (

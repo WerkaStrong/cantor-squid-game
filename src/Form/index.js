@@ -6,7 +6,7 @@ import "./style.css";
 
 export const Form = () => {
 
-  const [currency, setCurrency] = useState(currencies[1].short);
+  const [currency, setCurrency] = useState(currencies[0].short);
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("N/A");
 

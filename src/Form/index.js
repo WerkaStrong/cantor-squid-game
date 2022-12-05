@@ -33,7 +33,8 @@ export const Form = () => {
   };
 
   const resetResult = () => {
-    setResult("N/A")
+    setResult("N/A");
+    setAmount("");
   }
 
   return (

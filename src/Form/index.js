@@ -66,7 +66,7 @@ export const Form = () => {
         </p>
         <p className="form__paragraph">
           <label>
-            Wpisz wartość
+            <h3>Wpisz wartość</h3>
             <input
               value={amount}
               onChange={({ target }) => setAmount(target.value)}

@@ -3,12 +3,9 @@
 
 html {
     box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
     font-family: "Lato";
-    font-size: 15px;
-    line-height: 1.8;
     text-align: center;
+    font-size: 15px;
     background-image: url("/public/background.png");
     background-size: cover;
 }
@@ -19,8 +16,6 @@ html {
 
 main {
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
     background-color: #000000;
     border-radius: 10px;
 }

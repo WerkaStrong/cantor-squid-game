@@ -14,14 +14,19 @@ html {
     box-sizing: inherit;
 }
 
-main {
+#root{
+    background-color: black;
+    color: aliceblue;
     max-width: 800px;
-    background-color: #000000;
-    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    padding: 3%;
+    border-radius: 3%;
 }
 
-.calculatorField {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 2.5%;
-};
+@media (max-width: 767px) {
+    #root {
+        max-width: 400px;
+    }
+}

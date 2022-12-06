@@ -8,8 +8,6 @@ html {
     font-size: 15px;
     background-image: url("/public/background.png");
     background-size: cover;
-    display: flex;
-    justify-content: center;
 }
 
 *, ::after, ::before {

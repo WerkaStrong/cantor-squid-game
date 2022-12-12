@@ -1,8 +1,7 @@
 const Result = ({ result }) => {
     return(
     <p className="form__result">Twój wynik: {<strong> 
-        {result.targetAmount}&nbsp;
-        {result.currency ? result.currency : "N/A"}
+        {result.targetAmount ? result.targetAmount : "N/A"}&nbsp;
         </strong>}
         
     </p>

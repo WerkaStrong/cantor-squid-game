@@ -2,11 +2,11 @@ export const currencies = [
     {
         short: "PLN",
         name: "PLN",
-        rate: 0.0033,
+        rate: 296.685,
     },
     {
         short: "KRW",
         name: "Won południowokoreański",
-        rate: 295.88,
+        rate: 0.00337,
     }
 ]

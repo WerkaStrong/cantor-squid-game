@@ -51,16 +51,17 @@ export const Form = () => {
             <select
               value={currency}
               onChange={({ target }) => setCurrency(target.value)}
-              className="form__currencySelect">
-              <option
-                className="form_ResPLN"
-                value="PLN">PLN
-              </option>
-              <option
-                className="form_ResKRW"
-                value="KRW"
-              >Won południowokoreański
-              </option>
+              className="form__currencySelect"
+              >
+                {currencies.map((currency => (
+                  <option
+                  key={currency.short}
+                  className="form_ResPLN"
+                  value={currency.short}
+                  >
+                    {currency.name}
+                </option>
+                )))}
             </select>
           </label>
         </p>

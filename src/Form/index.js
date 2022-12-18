@@ -1,35 +1,37 @@
 import { render } from "@testing-library/react";
 import { useState } from "react";
-import { currencies } from "../currencies";
+import { currencyByShort } from "../currencies";
 import Result from "./Result";
 import "./style.css";
 
 export const Form = () => {
 
-  const [currency, setCurrency] = useState(currencies[0].short);
+  const [srcCurrency, setSrcCurrency] = useState(currencyByShort["PLN"]);
+  const [destCurrency, setDestCurrency] = useState(currencyByShort["KRW"]);
+
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("N/A");
 
-
-  const calculateResult = (currency, amount) => {
-    const rate = currencies
-      .find(({ short }) => short === currency)
-      .rate;
+  const currencies = Object.values(currencyByShort);
 
 
-    setResult({
-      sourceAmount: +amount,
-      targetAmount: amount * rate,
-      currency,
-    });
-  }
-
+  const calculateResult = ({ amount, srcCurrencyWeigth, destCurrencyWeigth }) => (
+    +amount * srcCurrencyWeigth / destCurrencyWeigth).toFixed(4)
 
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    setCurrency(event.target.value);
-    calculateResult(currency, amount);
+
+    const descAmount = calculateResult(
+      {
+        amount,
+        srcCurrencyWeigth: srcCurrency.rate,
+        destCurrencyWeigth: destCurrency.rate
+      });
+
+    setResult(`${descAmount} ${destCurrency.short}`);
+
+
   };
 
   const resetResult = () => {
@@ -47,32 +49,40 @@ export const Form = () => {
         <legend className="form__legend">Przelicz wony południowokoreańskie na złotówki</legend>
         <p className="form__paragraph">
           <label>
-            <h3>Wybierz Walutę</h3>
+            <h4>Wybierz walutę początkową</h4>
             <select
-              value={currency}
-              onChange={({ target }) => setCurrency(target.value)}
-              className="form__currencySelect"
-              >
-                {currencies.map((currency => (
-                  <option
-                  key={currency.short}
-                  className="form_ResPLN"
-                  value={currency.short}
-                  >
-                    {currency.name}
-                </option>
-                )))}
+              value={srcCurrency.short}
+              onChange={({ target }) => {
+                const currency = currencyByShort[target.value]
+                setSrcCurrency(currency)
+              }}
+              className="form__currencySelect">
+              {currencies.map(({ name, short }) => (
+                <option key={short} value={short}>{name}</option>
+              ))}
+            </select>
+            <h4>Wybierz walutę końcową</h4>
+            <select
+              value={destCurrency.short}
+              onChange={({ target }) => {
+                const currency = currencyByShort[target.value]
+                setDestCurrency(currency)
+              }}
+              className="form__currencySelect">
+              {currencies.map(({ name, short }) => (
+                <option key={short} value={short}>{name}</option>
+              ))}
             </select>
           </label>
         </p>
         <p className="form__paragraph">
           <label>
-            <h3>Wpisz wartość</h3>
+            <h4>Wpisz wartość</h4>
             <input
               value={amount}
               onChange={({ target }) => setAmount(target.value)}
               className="form__input"
-              required 
+              required
               type="number"
               name="amount"
               min="0.1"

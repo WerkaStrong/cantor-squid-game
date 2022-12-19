@@ -41,11 +41,20 @@
     font-size: 30px;
 }
 
-
-
 @media (max-width: 767px) {
     .calculatorField {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .form__paragraph {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .form__button {
+        margin: 5px;
     }
 }

@@ -8,16 +8,13 @@ export const Form = () => {
 
   const [srcCurrency, setSrcCurrency] = useState(currencyByShort["PLN"]);
   const [destCurrency, setDestCurrency] = useState(currencyByShort["KRW"]);
-
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("N/A");
 
   const currencies = Object.values(currencyByShort);
 
-
   const calculateResult = ({ amount, srcCurrencyWeigth, destCurrencyWeigth }) => (
     +amount * srcCurrencyWeigth / destCurrencyWeigth).toFixed(4)
-
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -30,8 +27,6 @@ export const Form = () => {
       });
 
     setResult(`${descAmount} ${destCurrency.short}`);
-
-
   };
 
   const resetResult = () => {
@@ -46,7 +41,7 @@ export const Form = () => {
       className="form"
       method="get">
       <fieldset className="form__fieldset">
-        <legend className="form__legend">Przelicz wony południowokoreańskie na złotówki</legend>
+        <legend className="form__legend">Przelicz {srcCurrency.name} na {destCurrency.name}</legend>
         <p className="form__paragraph">
           <label>
             <h4>Wybierz walutę początkową</h4>
@@ -104,8 +99,6 @@ export const Form = () => {
       <Result result={result} />
     </form>
   )
-
-
 };
 
 export default Form;

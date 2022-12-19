@@ -1,11 +1,11 @@
 export const currencyByShort = {
     PLN: {
-        name: "Polski złoty",
+        name: "polski złoty",
         short: "PLN",
         rate: 1,
     },
     KRW: {
-        name: "Won południowokoreański",
+        name: "won południowokoreański",
         short: "KRW",
         rate: 0.00337,
     },

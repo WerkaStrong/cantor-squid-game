@@ -16,7 +16,10 @@ function Clock() {
     }, []);
 
     return <span className="dateAndClock">
-        {date.toLocaleDateString("en-GB", {
+        Dzisiaj jest
+        {' '}
+        {date.toLocaleDateString("pl-PL", {
+            weekday: 'long',
             day: 'numeric',
             month: 'long',
             year: 'numeric',

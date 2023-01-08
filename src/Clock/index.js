@@ -15,7 +15,7 @@ function Clock() {
         };
     }, []);
 
-    return <span>
+    return <span className="dateAndClock">
         {date.toLocaleDateString("en-GB", {
             day: 'numeric',
             month: 'long',

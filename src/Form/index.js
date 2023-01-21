@@ -53,7 +53,11 @@ export const Form = () => {
               }}
               className="form__currencySelect">
               {currencies.map(({ name, short }) => (
-                <option key={short} value={short}>{name}</option>
+                <option 
+                key={short} 
+                value={short}
+                >
+                  {name}</option>
               ))}
             </select>
             <h4>Wybierz walutę końcową</h4>
@@ -65,7 +69,12 @@ export const Form = () => {
               }}
               className="form__currencySelect">
               {currencies.map(({ name, short }) => (
-                <option key={short} value={short}>{name}</option>
+                <option 
+                key={short} 
+                value={short}
+                disabled={short === srcCurrency.short}
+                >
+                  {name}</option>
               ))}
             </select>
           </label>

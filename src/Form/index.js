@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { currencyByShort } from "../currencies";
 import Result from "./Result";
 import "./style.css";
@@ -7,7 +7,7 @@ import "./style.css";
 export const Form = () => {
 
   const [srcCurrency, setSrcCurrency] = useState(currencyByShort["PLN"]);
-  const [destCurrency, setDestCurrency] = useState(currencyByShort["KRW"]);
+  const [destCurrency, setDestCurrency] = useState([]);
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("N/A");
 
@@ -68,13 +68,12 @@ export const Form = () => {
                 setDestCurrency(currency)
               }}
               className="form__currencySelect">
-              {currencies.map(({ name, short }) => (
+              {currencies.filter(test => test.short != srcCurrency.short).map((n) => (
                 <option 
-                key={short} 
-                value={short}
-                disabled={short === srcCurrency.short}
+                key={n.short} 
+                value={n.short}
                 >
-                  {name}</option>
+                  {n.name}</option>
               ))}
             </select>
           </label>

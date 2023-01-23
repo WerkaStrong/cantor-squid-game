@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import { useEffect, useState } from "react";
 import { currencyByShort } from "../currencies";
 import Result from "./Result";
@@ -7,7 +6,7 @@ import "./style.css";
 export const Form = () => {
 
   const [srcCurrency, setSrcCurrency] = useState(currencyByShort["PLN"]);
-  const [destCurrency, setDestCurrency] = useState([]);
+  const [destCurrency, setDestCurrency] = useState(currencyByShort["KRW"]);
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("N/A");
 
@@ -34,6 +33,14 @@ export const Form = () => {
     setAmount("");
   }
 
+  useEffect(() => {
+    const valueOtherThanSrc = currencies.find(item => item != srcCurrency);
+
+    if (srcCurrency.short === destCurrency.short) {
+      setDestCurrency(valueOtherThanSrc)
+    }
+  }, [srcCurrency, destCurrency]);
+
   return (
     <form
       onSubmit={onFormSubmit}
@@ -53,9 +60,9 @@ export const Form = () => {
               }}
               className="form__currencySelect">
               {currencies.map(({ name, short }) => (
-                <option 
-                key={short} 
-                value={short}
+                <option
+                  key={short}
+                  value={short}
                 >
                   {name}</option>
               ))}
@@ -68,12 +75,12 @@ export const Form = () => {
                 setDestCurrency(currency)
               }}
               className="form__currencySelect">
-              {currencies.filter(test => test.short != srcCurrency.short).map((n) => (
-                <option 
-                key={n.short} 
-                value={n.short}
+              {currencies.filter(filtered => filtered.short != srcCurrency.short).map((filtered) => (
+                <option
+                  key={filtered.short}
+                  value={filtered.short}
                 >
-                  {n.name}</option>
+                  {filtered.name}</option>
               ))}
             </select>
           </label>

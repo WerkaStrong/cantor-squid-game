@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const TimeAndDate = styled.span`
-    font-family: "Roboto Mono";
+    font-family: monospace;
     font-size: 12px;
     display: flex;
     justify-content: flex-end;

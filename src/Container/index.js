@@ -1,4 +1,4 @@
-import { Body} from "./styled";
+import { Body } from "./styled";
 
 
 const Container = ({children}) => (

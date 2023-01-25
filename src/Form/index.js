@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { currencyByShort } from "../currencies";
 import Result from "./Result";
-import "./style.css";
+import { Fieldset, Paragraph, Select, Input, Button } from "./styled";
+
 
 export const Form = () => {
 
@@ -47,18 +48,18 @@ export const Form = () => {
       onReset={resetResult}
       className="form"
       method="get">
-      <fieldset className="form__fieldset">
+      <Fieldset>
         <legend className="form__legend">Przelicz {srcCurrency.name} na {destCurrency.name}</legend>
-        <p className="form__paragraph">
+        <Paragraph>
           <label>
             <h4>Wybierz walutę początkową</h4>
-            <select
+            <Select
               value={srcCurrency.short}
               onChange={({ target }) => {
                 const currency = currencyByShort[target.value]
                 setSrcCurrency(currency)
               }}
-              className="form__currencySelect">
+              >
               {currencies.map(({ name, short }) => (
                 <option
                   key={short}
@@ -66,15 +67,15 @@ export const Form = () => {
                 >
                   {name}</option>
               ))}
-            </select>
+            </Select>
             <h4>Wybierz walutę końcową</h4>
-            <select
+            <Select
               value={destCurrency.short}
               onChange={({ target }) => {
                 const currency = currencyByShort[target.value]
                 setDestCurrency(currency)
               }}
-              className="form__currencySelect">
+              >
               {currencies.filter(filtered => filtered.short != srcCurrency.short).map((filtered) => (
                 <option
                   key={filtered.short}
@@ -82,35 +83,29 @@ export const Form = () => {
                 >
                   {filtered.name}</option>
               ))}
-            </select>
+            </Select>
           </label>
-        </p>
-        <p className="form__paragraph">
+        </Paragraph>
+        <Paragraph>
           <label>
             <h4>Wpisz wartość</h4>
-            <input
+            <Input
               value={amount}
               onChange={({ target }) => setAmount(target.value)}
-              className="form__input"
               required
               type="number"
               name="amount"
               min="0.1"
               step="any" />
           </label>
-        </p>
-      </fieldset>
-      <p className="form__paragraph">
-        <button
-          className="form__button">
-          Przelicz!
-        </button>
-        <button
-          className="form__button"
-          type="reset">
+        </Paragraph>
+      </Fieldset>
+      <Paragraph>
+        <Button> Przelicz! </Button>
+        <Button type="reset">
           Wyczyść
-        </button>
-      </p>
+        </Button>
+      </Paragraph>
       <Result result={result} />
     </form>
   )

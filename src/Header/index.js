@@ -1,9 +1,7 @@
-import "./style.css";
+import { CalculatorHeader } from "./styled";
 
 const Header = ({ title }) => (
-    <header>
-        <h1 className="calculatorField_header">{title}</h1>
-    </header>
+    <CalculatorHeader> {title} </CalculatorHeader>
 );
 
 export default Header;

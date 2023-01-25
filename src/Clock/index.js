@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./style.css";
+import { TimeAndDate } from "./styled";
 
 const Clock = () => {
     const [date, setDate] = useState(new Date());
@@ -13,7 +13,7 @@ const Clock = () => {
     }, []);
 
     return (
-        <span className="dateAndClock">
+        <TimeAndDate>
             Dzisiaj jest
             {' '}
             {date.toLocaleDateString("pl-PL", {
@@ -24,7 +24,7 @@ const Clock = () => {
             })}
             {' '}
             {date.toLocaleTimeString()}
-        </span>
+        </TimeAndDate>
     );
 }
 

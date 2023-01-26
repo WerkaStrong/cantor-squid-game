@@ -11,5 +11,5 @@ export function useCurrentDate() {
         return () => clearInterval(timerId);
     }, []);
 
-    return (date);
+    return date;
 }

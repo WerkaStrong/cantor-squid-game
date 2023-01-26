@@ -1,11 +1,9 @@
+import Result from "./Result";
 import { useEffect, useState } from "react";
 import { currencyByShort } from "../currencies";
-import Result from "./Result";
 import { Fieldset, Paragraph, Select, Input, Button } from "./styled";
 
-
 export const Form = () => {
-
   const [srcCurrency, setSrcCurrency] = useState(currencyByShort["PLN"]);
   const [destCurrency, setDestCurrency] = useState(currencyByShort["KRW"]);
   const [amount, setAmount] = useState("");
@@ -59,7 +57,7 @@ export const Form = () => {
                 const currency = currencyByShort[target.value]
                 setSrcCurrency(currency)
               }}
-              >
+            >
               {currencies.map(({ name, short }) => (
                 <option
                   key={short}
@@ -75,7 +73,7 @@ export const Form = () => {
                 const currency = currencyByShort[target.value]
                 setDestCurrency(currency)
               }}
-              >
+            >
               {currencies.filter(filtered => filtered.short != srcCurrency.short).map((filtered) => (
                 <option
                   key={filtered.short}

@@ -3,7 +3,6 @@ import { TimeAndDate } from "./styled";
 
 export const Clock = () => {
     const date = useCurrentDate();
-
     return (
         <TimeAndDate>
             Dzisiaj jest

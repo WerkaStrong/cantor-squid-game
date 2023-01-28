@@ -30,6 +30,9 @@ export const Form = () => {
   const resetResult = () => {
     setResult("N/A");
     setAmount("");
+    setSrcCurrency(currencyByShort["PLN"]);
+    setDestCurrency(currencyByShort["KRW"]);
+
   }
 
   useEffect(() => {

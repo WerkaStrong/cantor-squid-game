@@ -3,7 +3,8 @@
 ## Demo
 https://werkastrong.github.io/cantor-react/
 
-![Video_230128113322](https://user-images.githubusercontent.com/98229283/215262366-41a795ce-65cf-4742-b96c-d05c73c032bb.gif)
+
+![Animation_cantor](https://user-images.githubusercontent.com/98229283/215264661-0722b501-df63-4c0a-91f6-9ed50d83618b.gif)
 
 
 ## About

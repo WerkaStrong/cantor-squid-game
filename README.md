@@ -4,7 +4,6 @@
 https://werkastrong.github.io/cantor-react/
 
 
-https://user-images.githubusercontent.com/98229283/215261625-588e18a9-dcb9-42e7-814c-5cf853bb0535.mp4
 
 
 ## About

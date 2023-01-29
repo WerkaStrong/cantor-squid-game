@@ -27,6 +27,13 @@ export const Paragraph = styled.p`
     }
 `;
 
+export const Span = styled.span`
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+`;
+
 export const Input = styled.input`
     padding: 2%;
     width: 90%; 

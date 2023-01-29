@@ -1,7 +1,7 @@
 import Result from "./Result";
 import { useEffect, useState } from "react";
-import { currencyByShort } from "../currencies";
-import { Fieldset, Paragraph, Select, Input, Button } from "./styled";
+import { currencyByShort } from "../Container/currencies";
+import { Fieldset, Paragraph, Span, Select, Input, Button } from "./styled";
 
 export const Form = () => {
   const [srcCurrency, setSrcCurrency] = useState(currencyByShort["PLN"]);
@@ -52,7 +52,7 @@ export const Form = () => {
         <legend className="form__legend">Przelicz {srcCurrency.name} na {destCurrency.name}</legend>
         <Paragraph>
           <label>
-            <h4>Wybierz walutę początkową</h4>
+            <Span>Wybierz walutę początkową</Span>
             <Select
               value={srcCurrency.short}
               onChange={({ target }) => {
@@ -68,7 +68,7 @@ export const Form = () => {
                   {name}</option>
               ))}
             </Select>
-            <h4>Wybierz walutę końcową</h4>
+            <Span>Wybierz walutę końcową</Span>
             <Select
               value={destCurrency.short}
               onChange={({ target }) => {
@@ -88,7 +88,7 @@ export const Form = () => {
         </Paragraph>
         <Paragraph>
           <label>
-            <h4>Wpisz wartość</h4>
+            <Span>Wpisz wartość</Span>
             <Input
               value={amount}
               onChange={({ target }) => setAmount(target.value)}

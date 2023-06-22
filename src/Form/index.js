@@ -16,14 +16,11 @@ export const Form = () => {
         const data = await response.json();
         setRates(data.rates);
       } catch (error) {
-        console.error('Error fetching exchange rates:', error);
+        console.error('Wystąpił błąd', error);
       }
     };
 
     fetchData();
-
-    // resetowanie wartości result przy zmianie któregoś z selectów
-    setResult("N/A")
 
     // zapobieganie przeliczanie waluty na tą samą walute np. PLN na PLN
     const valueOtherThanSrc = currencyOptions.find(item => item != srcCurrency);

@@ -46,7 +46,7 @@ export const Form = () => {
   const calculateResult = () => {
     if (rates) {
       const rate = rates[destCurrency];
-      const convertedAmount = (amount * rate).toFixed(2);
+      const convertedAmount = (amount * rate).toFixed(4);
       setResult(`${convertedAmount} ${destCurrency}`);
     }
   };

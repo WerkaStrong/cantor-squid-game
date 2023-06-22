@@ -1,46 +1,60 @@
 import Result from "./Result";
 import { useEffect, useState } from "react";
-import { currencyByShort } from "../Container/currencies";
 import { Fieldset, Paragraph, Span, Select, Input, Button } from "./styled";
 
 export const Form = () => {
-  const [srcCurrency, setSrcCurrency] = useState(currencyByShort["PLN"]);
-  const [destCurrency, setDestCurrency] = useState(currencyByShort["KRW"]);
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("N/A");
+  const [rates, setRates] = useState(null);
+  const [srcCurrency, setSrcCurrency] = useState('PLN');
+  const [destCurrency, setDestCurrency] = useState('KRW');
 
-  const currencies = Object.values(currencyByShort);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://api.exchangerate.host/latest?base=${srcCurrency}&symbols=${destCurrency}`);
+        const data = await response.json();
+        setRates(data.rates);
+      } catch (error) {
+        console.error('Error fetching exchange rates:', error);
+      }
+    };
 
-  const calculateResult = ({ amount, srcCurrencyWeigth, destCurrencyWeigth }) => (
-    +amount * srcCurrencyWeigth / destCurrencyWeigth).toFixed(4)
+    fetchData();
+
+    // resetowanie wartości result przy zmianie któregoś z selectów
+    setResult("N/A")
+
+    // zapobieganie przeliczanie waluty na tą samą walute np. PLN na PLN
+    const valueOtherThanSrc = currencyOptions.find(item => item != srcCurrency);
+
+    if (srcCurrency === destCurrency) {
+      setDestCurrency(valueOtherThanSrc)
+    }
+
+  }, [srcCurrency, destCurrency]);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
-    const descAmount = calculateResult(
-      {
-        amount,
-        srcCurrencyWeigth: srcCurrency.rate,
-        destCurrencyWeigth: destCurrency.rate
-      });
-
-    setResult(`${descAmount} ${destCurrency.short}`);
+    calculateResult();
   };
 
   const resetResult = () => {
     setResult("N/A");
     setAmount("");
-    setSrcCurrency(currencyByShort["PLN"]);
-    setDestCurrency(currencyByShort["KRW"])
+    setSrcCurrency('PLN');
+    setDestCurrency('KRW');
   }
 
-  useEffect(() => {
-    const valueOtherThanSrc = currencies.find(item => item != srcCurrency);
-
-    if (srcCurrency.short === destCurrency.short) {
-      setDestCurrency(valueOtherThanSrc)
+  const calculateResult = () => {
+    if (rates) {
+      const rate = rates[destCurrency];
+      const convertedAmount = (amount * rate).toFixed(2);
+      setResult(`${convertedAmount} ${destCurrency}`);
     }
-  }, [srcCurrency, destCurrency]);
+  };
+
+  const currencyOptions = ['PLN', 'KRW'];
 
   return (
     <form
@@ -49,39 +63,40 @@ export const Form = () => {
       className="form"
       method="get">
       <Fieldset>
-        <legend className="form__legend">Przelicz {srcCurrency.name} na {destCurrency.name}</legend>
+        <legend className="form__legend">Przelicz {srcCurrency} na {destCurrency}</legend>
         <Paragraph>
+          <label></label>
+          <Span>Wybierz walutę początkową</Span>
+          <Select
+            id="srcCurrency"
+            value={srcCurrency}
+            onChange={({ target }) => {
+              setSrcCurrency(target.value)
+            }}
+          >
+            {currencyOptions.map((currency) => (
+              <option
+                key={currency}
+                value={currency}
+              >
+                {currency}</option>
+            ))}
+          </Select>
           <label>
-            <Span>Wybierz walutę początkową</Span>
-            <Select
-              value={srcCurrency.short}
-              onChange={({ target }) => {
-                const currency = currencyByShort[target.value]
-                setSrcCurrency(currency)
-              }}
-            >
-              {currencies.map(({ name, short }) => (
-                <option
-                  key={short}
-                  value={short}
-                >
-                  {name}</option>
-              ))}
-            </Select>
             <Span>Wybierz walutę końcową</Span>
             <Select
-              value={destCurrency.short}
+              id="destCurrency"
+              value={destCurrency}
               onChange={({ target }) => {
-                const currency = currencyByShort[target.value]
-                setDestCurrency(currency)
+                setDestCurrency(target.value)
               }}
             >
-              {currencies.filter(filtered => filtered.short != srcCurrency.short).map((filtered) => (
+              {currencyOptions.map((currency) => (
                 <option
-                  key={filtered.short}
-                  value={filtered.short}
+                  key={currency}
+                  value={currency}
                 >
-                  {filtered.name}</option>
+                  {currency}</option>
               ))}
             </Select>
           </label>
@@ -91,7 +106,9 @@ export const Form = () => {
             <Span>Wpisz wartość</Span>
             <Input
               value={amount}
-              onChange={({ target }) => setAmount(target.value)}
+              onChange={({ target }) => {
+                setAmount(target.value)
+              }}
               required
               type="number"
               name="amount"

@@ -27,11 +27,26 @@ export const Paragraph = styled.p`
     }
 `;
 
+export const Loading = styled.p`
+    font-size: 15px;
+    color: #ffffff;
+`;
+
+export const Failure = styled.p`
+    font-size: 15px;
+    color: red;
+`;
+
 export const Span = styled.span`
     font-size: 15px;
     display: flex;
     flex-direction: column;
     padding: 2%;
+
+    ${({ modified }) => modified && `
+        font-family: monospace;
+        font-size: 12px;
+    `}
 `;
 
 export const Input = styled.input`

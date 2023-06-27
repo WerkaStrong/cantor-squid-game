@@ -1,23 +1,35 @@
 import { useEffect, useState } from "react";
 
 const useDataRates = () => {
-    const [rates, setRates] = useState(null);
+  const [rates, setRates] = useState({
+    state: "loading",
+  });
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await fetch(`https://api.exchangerate.host/latest?base=PLN`);
-            const data = await response.json();
-            setRates(data.rates);
-          } catch (error) {
-            console.error('Wystąpił błąd', error);
-          }
-        };
-    
-        fetchData();
-      }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://api.exchangerate.host/latest?base=PLN`);
 
-      return rates;
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+
+        const data = await response.json();
+        setRates({
+          state: data.rates,
+          date: data.date
+        });
+      } catch {
+        setRates({
+          state: "error",
+        })
+      }
+    };
+
+    setTimeout(fetchData, 1500);
+  }, []);
+
+  return rates;
 }
 
 export default useDataRates;

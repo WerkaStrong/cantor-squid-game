@@ -1,3 +1,4 @@
+import useDataRates from "./useDataRates";
 import Result from "./Result";
 import { useEffect, useState } from "react";
 import { Fieldset, Paragraph, Span, Select, Input, Button } from "./styled";
@@ -5,24 +6,11 @@ import { Fieldset, Paragraph, Span, Select, Input, Button } from "./styled";
 export const Form = () => {
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("N/A");
-  const [rates, setRates] = useState(null);
   const [srcCurrency, setSrcCurrency] = useState('PLN');
   const [destCurrency, setDestCurrency] = useState('KRW');
   const [currencyOptions, setCurrencyOptions] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://api.exchangerate.host/latest?base=PLN`);
-        const data = await response.json();
-        setRates(data.rates);
-      } catch (error) {
-        console.error('Wystąpił błąd', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const rates = useDataRates();
 
   useEffect(() => {
     const currencyOpts = ['PLN', 'KRW'];
@@ -39,7 +27,7 @@ export const Form = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    calculateResult(srcCurrency);
+    calculateResult();
   };
 
   const resetResult = () => {

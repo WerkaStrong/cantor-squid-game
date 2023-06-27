@@ -8,11 +8,12 @@ export const Form = () => {
   const [rates, setRates] = useState(null);
   const [srcCurrency, setSrcCurrency] = useState('PLN');
   const [destCurrency, setDestCurrency] = useState('KRW');
+  const [currencyOptions, setCurrencyOptions] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://api.exchangerate.host/latest?base=${srcCurrency}&symbols=${destCurrency}`);
+        const response = await fetch(`https://api.exchangerate.host/latest?base=PLN`);
         const data = await response.json();
         setRates(data.rates);
       } catch (error) {
@@ -21,6 +22,11 @@ export const Form = () => {
     };
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const currencyOpts = ['PLN', 'KRW'];
+    setCurrencyOptions(currencyOpts);
 
     // zapobieganie przeliczanie waluty na tą samą walute np. PLN na PLN
     const valueOtherThanSrc = currencyOptions.find(item => item != srcCurrency);
@@ -33,7 +39,7 @@ export const Form = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    calculateResult();
+    calculateResult(srcCurrency);
   };
 
   const resetResult = () => {
@@ -45,13 +51,12 @@ export const Form = () => {
 
   const calculateResult = () => {
     if (rates) {
-      const rate = rates[destCurrency];
-      const convertedAmount = (amount * rate).toFixed(4);
+      const srcRate = rates[srcCurrency];
+      const destRate = rates[destCurrency];
+      const convertedAmount = ((amount / srcRate) * destRate).toFixed(4);
       setResult(`${convertedAmount} ${destCurrency}`);
     }
   };
-
-  const currencyOptions = ['PLN', 'KRW'];
 
   return (
     <form

@@ -3,9 +3,7 @@
 ## Demo
 https://werkastrong.github.io/cantor-react/
 
-
-![Animation_cantor](https://user-images.githubusercontent.com/98229283/215264661-0722b501-df63-4c0a-91f6-9ed50d83618b.gif)
-
+![cantor_animation](https://github.com/WerkaStrong/cantor-react/assets/98229283/36848177-b3d5-46bc-a796-cf33966409e2)
 
 ## About
 This is a currency converter from Polish (PLN) to South Korean (KRW) and vice versa build in React. The idea to build this kind of calculator was born while watching the well-known series "Squid game" and the growing tendency of internet inquiries related to the South Korean currency.
@@ -13,6 +11,7 @@ This is a currency converter from Polish (PLN) to South Korean (KRW) and vice ve
 ## Technologies used
 <ul>
   <li>React</li>
+  <li>React Hooks</li>
   <li>Create React App</li>
   <li>Webpack</li>
   <li>Babel</li>
@@ -20,6 +19,8 @@ This is a currency converter from Polish (PLN) to South Korean (KRW) and vice ve
   <li>CSS</li>
   <li>JS</li>
   <li>Media queries</li>
+  <li>Styled-Components</li>
+  
 </ul>
 
 # Getting Started with Create React App

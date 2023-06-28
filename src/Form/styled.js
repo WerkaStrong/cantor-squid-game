@@ -46,6 +46,7 @@ export const Span = styled.span`
     ${({ modified }) => modified && `
         font-family: monospace;
         font-size: 12px;
+        padding: 0;
     `}
 `;
 

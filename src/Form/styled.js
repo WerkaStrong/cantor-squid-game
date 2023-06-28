@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Fieldset = styled.fieldset`
+    font-family:  "Lato";
     border:none;
 
     @media (max-width: 767px) {

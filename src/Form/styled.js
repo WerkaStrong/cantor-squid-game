@@ -11,7 +11,6 @@ export const Fieldset = styled.fieldset`
 `;
 
 export const Select = styled.select`
-    font-family:  "Lato";
     font-size: 15px;
     padding: 1%;
 `;

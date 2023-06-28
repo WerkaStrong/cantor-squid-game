@@ -3,8 +3,7 @@
 ## Demo
 https://werkastrong.github.io/cantor-react/
 
-
-![Animation_cantor](https://user-images.githubusercontent.com/98229283/215264661-0722b501-df63-4c0a-91f6-9ed50d83618b.gif)
+![cantor_api_animation](https://github.com/WerkaStrong/cantor-react/assets/98229283/5d2cde6c-1260-4c68-a1f4-6649cce9b04a)
 
 
 ## About
@@ -13,6 +12,7 @@ This is a currency converter from Polish (PLN) to South Korean (KRW) and vice ve
 ## Technologies used
 <ul>
   <li>React</li>
+  <li>React Hooks</li>
   <li>Create React App</li>
   <li>Webpack</li>
   <li>Babel</li>
@@ -20,6 +20,8 @@ This is a currency converter from Polish (PLN) to South Korean (KRW) and vice ve
   <li>CSS</li>
   <li>JS</li>
   <li>Media queries</li>
+  <li>Styled-Components</li>
+  
 </ul>
 
 # Getting Started with Create React App

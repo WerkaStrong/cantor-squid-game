@@ -40,8 +40,8 @@ export const Form = () => {
 
   const calculateResult = () => {
     if (rates) {
-      const srcRate = rates.state[srcCurrency];
-      const destRate = rates.state[destCurrency];
+      const srcRate = rates.rates[srcCurrency];
+      const destRate = rates.rates[destCurrency];
       const convertedAmount = ((amount / srcRate) * destRate).toFixed(4);
       setResult(`${convertedAmount} ${destCurrency}`);
     }
@@ -53,13 +53,13 @@ export const Form = () => {
       onReset={resetResult}
       className="form"
       method="get">
-      {rates.state === "loading"
+      {rates.status === "loading"
         ? (
           <Loading>
             Hej, właśnie pobierają się dane, chwilkę to potrwa 😉
           </Loading>
         ) : (
-          rates.state === "error" ? (
+          rates.status === "error" ? (
             <Failure>
               Coś poszło nie tak, sprawdź połączenie internetowe lub zajrzyj tu później
             </Failure>

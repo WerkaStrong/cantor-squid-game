@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useDataRates = () => {
   const [rates, setRates] = useState({
-    state: "loading",
+    status: "loading",
   });
 
   useEffect(() => {
@@ -16,12 +16,12 @@ const useDataRates = () => {
 
         const data = await response.json();
         setRates({
-          state: data.rates,
+          rates: data.rates,
           date: data.date
         });
       } catch {
         setRates({
-          state: "error",
+          status: "error",
         })
       }
     };

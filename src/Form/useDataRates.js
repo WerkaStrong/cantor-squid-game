@@ -5,10 +5,12 @@ const useDataRates = () => {
     status: "loading",
   });
 
+  const BASE_URL = 'https://api.exchangerate.host/latest?base=PLN';
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://api.exchangerate.host/latest?base=PLN`);
+        const response = await fetch(BASE_URL);
 
         if (!response.ok) {
           throw new Error(response.statusText);

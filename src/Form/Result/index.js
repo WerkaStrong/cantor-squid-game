@@ -1,11 +1,7 @@
-import { ResultField } from "./styled";
+import { ResultField } from './styled';
 
 const Result = ({ result }) => {
-    return(
-    <ResultField>Twój wynik: {<strong> 
-        {result} 
-        </strong>}
-    </ResultField>
-)};
+    return <ResultField>Your result: {<strong>{result}</strong>}</ResultField>;
+};
 
 export default Result;

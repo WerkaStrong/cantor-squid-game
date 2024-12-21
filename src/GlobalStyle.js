@@ -1,6 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import background from "./background.png";
-
+import { createGlobalStyle } from 'styled-components';
+import background from './background.png';
 
 export const GlobalStyle = createGlobalStyle`
  
@@ -8,19 +7,23 @@ html {
     box-sizing: border-box;
     font-family: "Lato";
     text-align: center;
-    font-size: 15px;
+    font-size: 22px;
     background-image: url("${background}");
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 *, ::after, ::before {
     box-sizing: inherit;
 }
 
-#root{
+#root {
     background-color: black;
     color: aliceblue;
-    max-width: 800px;
+    width: 100%;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
@@ -33,4 +36,5 @@ html {
         max-width: 400px;
     }
 }
-`
+
+`;

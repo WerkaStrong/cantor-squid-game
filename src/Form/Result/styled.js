@@ -1,5 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ResultField = styled.p`
-    font-size: 30px;
+    font-size: 40px;
 `;

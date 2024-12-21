@@ -1,37 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const useDataRates = () => {
-  const [rates, setRates] = useState({
-    status: "loading",
-  });
+    const [rates, setRates] = useState({
+        status: 'loading',
+    });
 
-  const BASE_URL = 'https://api.exchangerate.host/latest?base=PLN';
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(BASE_URL);
+    // Zaktualizowany link do API
+    const BASE_URL = 'https://api.exchangerate-api.com/v4/latest/PLN';
 
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(BASE_URL);
 
-        const data = await response.json();
-        setRates({
-          rates: data.rates,
-          date: data.date
-        });
-      } catch {
-        setRates({
-          status: "error",
-        })
-      }
-    };
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
 
-    setTimeout(fetchData, 1500);
-  }, []);
+                const data = await response.json();
 
-  return rates;
-}
+                // Pobieranie kursów dla PLN, KRW, EUR, USD
+                const filteredRates = {
+                    PLN: data.rates.PLN, // Kurs dla PLN
+                    KRW: data.rates.KRW, // Kurs dla KRW
+                    EUR: data.rates.EUR, // Kurs dla EUR
+                    USD: data.rates.USD, // Kurs dla USD
+                };
+
+                setRates({
+                    rates: filteredRates,
+                    date: data.date,
+                });
+            } catch (error) {
+                setRates({
+                    status: 'error',
+                });
+            }
+        };
+
+        setTimeout(fetchData, 1500);
+    }, []);
+
+    return rates;
+};
 
 export default useDataRates;

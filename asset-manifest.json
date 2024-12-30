@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/cantor-squid-game/static/js/main.a6a791dd.js",
+    "main.js": "/cantor-squid-game/static/js/main.af2f2de1.js",
     "static/js/787.15f32a39.chunk.js": "/cantor-squid-game/static/js/787.15f32a39.chunk.js",
     "static/media/background.png": "/cantor-squid-game/static/media/background.aa09e93368459d727848.png",
     "index.html": "/cantor-squid-game/index.html",
-    "main.a6a791dd.js.map": "/cantor-squid-game/static/js/main.a6a791dd.js.map",
+    "main.af2f2de1.js.map": "/cantor-squid-game/static/js/main.af2f2de1.js.map",
     "787.15f32a39.chunk.js.map": "/cantor-squid-game/static/js/787.15f32a39.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.a6a791dd.js"
+    "static/js/main.af2f2de1.js"
   ]
 }

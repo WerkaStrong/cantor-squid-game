@@ -26,14 +26,15 @@ export const Form = () => {
         setCurrencyOptions(currencyOpts);
         setDate(rates.date);
 
-        const valueOtherThanSrc = currencyOptions.find(
-            (item) => item !== srcCurrency
-        );
-
         if (srcCurrency === destCurrency) {
-            setDestCurrency(valueOtherThanSrc);
+            const valueOtherThanSrc = currencyOpts.find(
+                (item) => item !== srcCurrency
+            );
+            if (valueOtherThanSrc) {
+                setDestCurrency(valueOtherThanSrc);
+            }
         }
-    }, [srcCurrency, destCurrency, rates]);
+    }, [srcCurrency, rates]);
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -43,8 +44,6 @@ export const Form = () => {
     const resetResult = () => {
         setResult('N/A');
         setAmount('');
-        setSrcCurrency('PLN');
-        setDestCurrency('KRW');
     };
 
     const calculateResult = () => {
@@ -59,7 +58,10 @@ export const Form = () => {
     return (
         <form
             onSubmit={onFormSubmit}
-            onReset={resetResult}
+            onReset={(event) => {
+                event.preventDefault();
+                resetResult();
+            }}
             className="form"
             method="get"
         >

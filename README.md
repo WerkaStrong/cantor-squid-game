@@ -1,13 +1,24 @@
 # Cantor 
 
 ## Demo
-https://werkastrong.github.io/cantor-react/
+[https://werkastrong.github.io/cantor-react/](https://werkastrong.github.io/cantor-squid-game/)
 
-![cantor_animation](https://github.com/WerkaStrong/cantor-react/assets/98229283/ea742283-b082-4d27-9f65-d95c73f849f3)
+
+![cantor_animation](https://github.com/user-attachments/assets/e5f7a44e-c432-4bdb-ba2b-224a1b2eb54c)
 
 ## About
-This is a currency converter from Polish (PLN) to South Korean (KRW) and vice versa build in React. The idea to build this kind of calculator was born while watching the well-known series "Squid game" and the growing tendency of internet inquiries related to the South Korean currency.
+This is a currency converter from Polish (PLN) to Euro (EUR), Dollar (USD), and vice versa, built in React. The idea to build this kind of calculator was born while watching the well-known series "Squid game" and the growing tendency of internet inquiries related to the South Korean currency.
 
+
+## Features
+<ul>
+  <li><strong>Real-time currency conversion</strong> between PLN, EUR, and USD.</li>
+  <li><strong>Interactive UI</strong> with responsive design for optimal user experience on all devices.</li>
+  <li><strong>Styled Components</strong> for dynamic theming and component-level styling.</li>
+  <li>Simple and clean code structure, ideal for developers exploring React Hooks and modern JavaScript.</li>
+</ul>
+
+ 
 ## Technologies used
 <ul>
   <li>React</li>
@@ -20,7 +31,6 @@ This is a currency converter from Polish (PLN) to South Korean (KRW) and vice ve
   <li>JS</li>
   <li>Media queries</li>
   <li>Styled-Components</li>
-  
 </ul>
 
 # Getting Started with Create React App

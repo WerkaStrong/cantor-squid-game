@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/cantor-react/static/js/main.4ec55d5e.js",
+    "static/js/787.15f32a39.chunk.js": "/cantor-react/static/js/787.15f32a39.chunk.js",
+    "static/media/background.png": "/cantor-react/static/media/background.aa09e93368459d727848.png",
+    "index.html": "/cantor-react/index.html",
+    "main.4ec55d5e.js.map": "/cantor-react/static/js/main.4ec55d5e.js.map",
+    "787.15f32a39.chunk.js.map": "/cantor-react/static/js/787.15f32a39.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4ec55d5e.js"
+  ]
+}

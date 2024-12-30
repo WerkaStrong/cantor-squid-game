@@ -23,7 +23,7 @@ html {
     background-color: black;
     color: aliceblue;
     width: 100%;
-    max-width: 1400px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;

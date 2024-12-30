@@ -3,9 +3,6 @@
 ## Demo
 [https://werkastrong.github.io/cantor-react/](https://werkastrong.github.io/cantor-squid-game/)
 
-
-![cantor_animation](https://github.com/user-attachments/assets/e5f7a44e-c432-4bdb-ba2b-224a1b2eb54c)
-
 ### Video Demo
 Watch the project in action:  
 [![Cantor Video Demo](https://img.youtube.com/vi/lXQQV9jwG24/0.jpg)](https://www.youtube.com/watch?v=lXQQV9jwG24)
